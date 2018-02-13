@@ -1,2 +1,7 @@
-# Proyecto-Final
-Proyecto Final de introduccion a la programacion de computadoras, se crea un cotizador automatico en javascrip
+## Cotizador Automatico de la Empresa TK-U
+
+#Integrantes del Grupo
+> Nombre:	Gustavo Adolfo Pereira Moreno
+> Carnet:	08000114
+
+#Fin prueba

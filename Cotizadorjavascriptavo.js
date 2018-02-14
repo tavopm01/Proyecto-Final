@@ -1,40 +1,61 @@
 // inicializamos variables de ciclo
 var conVali = 0;
 var ciclocon = 0; 
+var ciclohij = 0; 
 
 // inicializamos variables Asegurado 
 var AseName = new String
 var AseHBD = new String
+var EdadAse = new String
 
 // inicializamos variables Conyuge
+var ConNAme = new String
 var ConHBD = new String
+var EdadCon = new String
 
+//inicializamos variables Hijos
+var ResHijos = new String
+var Hijos = new String
 // inicializamos variables auxiliares
-var FecCorrectaAse = new String
-var EdadAseCor = new String
 var ResConyuge = new String
-var FecCorrectaCon = new String
+var ResHijos = new String
+
 
 // pedimos datos del asegurado
 AseName = prompt("Nombre completo:", "");
 AseHBD = prompt("Fecha Nacimiento formato: mm/dd/aaaa");
 
 // validamos que la fecha ingresada Sea correcta con la funcion ValidarFecha(contador,fechaingresada)
-FecCorrectaAse = ValidarFecha(conVali, AseHBD);
+AseHBD = ValidarFecha(conVali, AseHBD);
 
 // valida la fecha vemos cuantos años tiene el Asegurado
-EdadAseCor = Edad(FecCorrectaAse); 		
+EdadAse = Edad(AseHBD); 		
 
 //pedimos datos del asegurado si tiene esposa o esposo
 ResConyuge = prompt("¿Tiene Esposa o Esposo?: SI/NO", "");
 
 //validamos respuesta de asegurado de esposa o esposo
 if (validacon(ResConyuge) == "si"){
+	ConName = prompt("Nombre Conyuge:", "");
 	ConHBD = prompt("Fecha Nacimiento pareja: mm/dd/aaaa");
-	FecCorrectaCon = ValidarFecha(conVali, ConHBD); 
+	ConHBD = ValidarFecha(conVali, ConHBD); 
+	EdadCon = Edad(ConHBD); 	
 }
 
 
+//preguntamos si tiene Hijos
+ResHijos = prompt("¿Tiene Hijos?: SI/NO", "");
+CanHijos = validaHijo(ResHijos);
+Hijos = vaHijos(CanHijos);
+
+document.write(AseName);
+document.write(AseHBD);
+document.write(EdadAse);
+document.write(ConName);
+document.write(ConHBD);
+document.write(EdadCon);
+document.write(ResHijos);
+document.write(Hijos);
 
 // Funciones
 //funcion que valida que la fecha ingresada sea la correcta.
@@ -90,13 +111,20 @@ function Edad(fecha){
 	var annomes = parseInt(fecha.slice(0, 2));
 	var annodia = parseInt(fecha.slice(3, 5));
 	var annoaux = parseInt(fecha.slice(6, 10));
+	alert(annomes)
+	alert (fechames)
 	if(annomes <= fechames){
 		if(annodia <= fechadia){
 			var annoactual = 2018;
 			var annoshbd = annoactual - annoaux;
 		}else{
-			var annoactual = 2018;
-			var annoshbd = annoactual - annoaux-1;
+				if(annomes <= fechames){
+				var annoactual = 2018;
+				var annoshbd = annoactual - annoaux;
+				}else{
+				var annoactual = 2018;
+				var annoshbd = annoactual - annoaux;
+				}
 			}
 							}else{
 						var annoactual = 2018;
@@ -130,3 +158,41 @@ while (ciclocon == 0){
 return respuestacon;
 }
 // ******************* Conyuge *****************************************************************************
+
+// ******************* hijos *****************************************************************************
+function validaHijo(aux){
+	var hijorespuesta = aux.toLowerCase();
+	var conteohijo = aux.length; 
+while (ciclohij == 0){
+		if(conteohijo == 2){
+			if ((hijorespuesta == "si") || (hijorespuesta == "no")){
+				respuestahijo = hijorespuesta;
+				ciclohij = 1;
+			}else {hijorespuesta = prompt("Favor ingresar respuesta correctamente \n ¿Tiene Hijos?: SI/NO", "");
+					hijorespuesta = hijorespuesta.toLowerCase();
+					conteohijo = hijorespuesta.length; 
+					ciclohij = 0; 
+					}
+		}else {hijorespuesta = prompt("Favor ingresar respuesta correctamente \n ¿Tiene Hijos?: SI/NO", "");
+					hijorespuesta = hijorespuesta.toLowerCase();
+					conteohijo = hijorespuesta.length; 
+					ciclohij = 0;
+				}
+}
+return respuestahijo;
+}
+// ******************* hijos *****************************************************************************
+
+//funcion cuenta hijos y valida cantidad
+// ******************* hijos conteo **********************************************************************
+function vaHijos(caux){
+var cantidadhijos;
+if (caux == "si"){
+	chiquirrines = prompt("Favor ingresar cantidad de hijos (numeros)", "");
+	if (chiquirrines > 0){
+		cantidadhijos = parseInt(chiquirrines);
+	}
+}else{cantidadhijos = 0;}
+return cantidadhijos;
+}
+// ******************* hijos conteo **********************************************************************

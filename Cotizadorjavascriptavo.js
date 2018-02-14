@@ -2,31 +2,19 @@
 // ******                   VARIABLES                                                                 *****
 // ********************************************************************************************************
 
-// inicializamos variables de ciclo
 var conVali = 0;
 var ciclocon = 0; 
 var ciclohij = 0; 
-
-// inicializamos variables Asegurado 
 var AseName = new String
 var AseHBD = new String
 var EdadAse = new String
-
-// inicializamos variables Conyuge
 var ConNAme = new String
 var ConHBD = new String
 var EdadCon = new String
-
-//inicializamos variables Hijos
 var ResHijos = new String
 var Hijos = new String
-// inicializamos variables auxiliares
 var ResConyuge = new String
 var ResHijos = new String
-
-
-
-// constantes
 const precioBase = 250;
 
 // ********************************************************************************************************
@@ -52,7 +40,7 @@ if (validacon(ResConyuge) == "si"){
 	ConHBD = prompt("Fecha Nacimiento pareja: mm/dd/aaaa");
 	ConHBD = ValidarFecha(conVali, ConHBD); 
 	EdadCon = Edad(ConHBD); 	
-	recargoscc = parseInt(RecCon(precioBase,EdadCon));
+	recargoscc = parseFloat(RecCon(precioBase,EdadCon));
 }
 
 
@@ -61,13 +49,17 @@ ResHijos = prompt("¿Tiene Hijos?: SI/NO", "");
 CanHijos = validaHijo(ResHijos);
 Hijos = vaHijos(CanHijos);
 
+
 // ********************************************************************************************************
 // ******                   OPERACIONES                                                               *****
 // ********************************************************************************************************
 
 comision = precioBase * 0.30;
-recargosaa = parseInt(RecASeg(precioBase,EdadAse));
+recargosaa = parseFloat(RecASeg(precioBase,EdadAse));
 recargoshh = Hijos * (precioBase*0.01);
+alert(recargosaa);
+alert(recargoscc);
+alert(recargoshh);
 recargos = recargosaa + recargoscc + recargoshh;
 totalPagar = precioBase + comision + recargos;
 alert(totalPagar);

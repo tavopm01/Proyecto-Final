@@ -1,125 +1,92 @@
-
-//ciclos variables iniciales
-var validesfecha = 0;
-var validesfecha2 = 0;
-var hijosconteo = 0;
+// inicializamos variables de ciclo
+var conVali = 0;
 var ciclocon = 0; 
 
-// creamos variables
-var nombreCompleto = new String
-var diaNacimiento  = new String
-var mesNacimiento  = new String
-var anioNacimiento = new String
-var fechaNacAsegur = new String
-var fechacompleta = new String
+// inicializamos variables Asegurado 
+var AseName = new String
+var AseHBD = new String
 
-var mesNacimientooperatorio = new String
-var diaNacimientooperatorio 
-var prueba
+// inicializamos variables Conyuge
+var ConHBD = new String
 
+// inicializamos variables auxiliares
+var FecCorrectaAse = new String
+var EdadAseCor = new String
+var ResConyuge = new String
+var FecCorrectaCon = new String
 
+// pedimos datos del asegurado
+AseName = prompt("Nombre completo:", "");
+AseHBD = prompt("Fecha Nacimiento formato: mm/dd/aaaa");
 
+// validamos que la fecha ingresada Sea correcta con la funcion ValidarFecha(contador,fechaingresada)
+FecCorrectaAse = ValidarFecha(conVali, AseHBD);
 
+// valida la fecha vemos cuantos años tiene el Asegurado
+EdadAseCor = Edad(FecCorrectaAse); 		
 
-/* pedimos datos al usuario
-nombreCompleto = prompt("Nombre completo:", "");
-fechacompletaNaci = prompt("Fecha Nacimiento formato: mm/dd/aaaa");
-fechavalidada = validarfecha(validesfecha, fechacompletaNaci);                          // devuelve la fecha validad
-annosvalidada = annos(fechavalidada); 													//devuelve los años cumplidos
-conyugeaux = prompt("¿Tiene Esposa o Esposo?: SI/NO", "");
-if (validacon(conyugeaux) == "si"){
-	fechaconyuge = prompt("Fecha Nacimiento pareja: mm/dd/aaaa");
-	fechavalidadaconyuge = validarfecha(validesfecha2, fechaconyuge); 
+//pedimos datos del asegurado si tiene esposa o esposo
+ResConyuge = prompt("¿Tiene Esposa o Esposo?: SI/NO", "");
+
+//validamos respuesta de asegurado de esposa o esposo
+if (validacon(ResConyuge) == "si"){
+	ConHBD = prompt("Fecha Nacimiento pareja: mm/dd/aaaa");
+	FecCorrectaCon = ValidarFecha(conVali, ConHBD); 
 }
-hijosaux = prompt("¿Tiene Hijos?: SI/NO", "");
-respuestahijoss = validahijo(hijosaux);
-hijosreconteo = hijos(respuestahijoss);
-*/
 
 
 
-
-const precioBase = 250;
-comision = precioBase * 0.30;
-
-
-
-
-
-
-
-// En la siguiente variable usted debe calcular los cargos correspondientes.
-
-// Puede crear la cantidad de variables necesarias para calcular cada uno
-
-// de los recargos que sean necesarios
-
-recargos = 0;
-
-
-
-
-
-totalPagar = precioBase + comision + recargos;
-
-document.write(totalPagar);
-
-	
-	*/
-	
-//Funciones
-
+// Funciones
 //funcion que valida que la fecha ingresada sea la correcta.
 // ******************* validez *****************************************************************************
-function validarfecha(validesfecha, fechacompletaNaci) {
-	var verificadorNacl = fechacompletaNaci.length; 
-while (validesfecha == 0){
-if (verificadorNacl == 10){
-	var separador = fechacompletaNaci.slice(2, 3);
+function ValidarFecha(conVali, fechaHBD) {
+	var validoHBD = fechaHBD.length; 
+while (conVali == 0){
+if (validoHBD == 10){
+	var separador = fechaHBD.slice(2, 3);
 		if (separador == "/"){
-		var separador  = fechacompletaNaci.slice(5, 6);
+		var separador  = fechaHBD.slice(5, 6);
 			if (separador == "/"){
-				var mes = parseInt(fechacompletaNaci.slice(0, 2));
-				var dia = parseInt(fechacompletaNaci.slice(3, 5));
-				var anno = parseInt(fechacompletaNaci.slice(6, 10));
+				var mes = parseInt(fechaHBD.slice(0, 2));
+				var dia = parseInt(fechaHBD.slice(3, 5));
+				var anno = parseInt(fechaHBD.slice(6, 10));
 				if((mes > 0) && (mes < 13)){
 					if((dia > 0) && (dia < 32)){
 						if((anno > 1900) && (anno < 2019)){
-							validesfecha = 1;
-						}else {fechacompletaNaci = prompt("Ingrese Correctamente \n Fecha Nacimiento formato: mm/dd/aaaa");
-								verificadorNacl = fechacompletaNaci.length; 
-								validesfecha = 0; }
-					}else {fechacompletaNaci = prompt("Ingrese Correctamente \n Fecha Nacimiento formato: mm/dd/aaaa");
-								verificadorNacl = fechacompletaNaci.length; 
-								validesfecha = 0; }
-				}else {fechacompletaNaci = prompt("Ingrese Correctamente \n Fecha Nacimiento formato: mm/dd/aaaa");
-								verificadorNacl = fechacompletaNaci.length; 
-								validesfecha = 0; }
-			}else {fechacompletaNaci = prompt("Ingrese Correctamente formato \n Fecha Nacimiento formato: mm/dd/aaaa");
-								verificadorNacl = fechacompletaNaci.length; 
-								validesfecha = 0; }
-		}else {fechacompletaNaci = prompt("Ingrese Correctamente formato \n Fecha Nacimiento formato: mm/dd/aaaa");
-								verificadorNacl = fechacompletaNaci.length; 
-								validesfecha = 0; }
-	}else {fechacompletaNaci = prompt("No es una fecha valida \n Fecha Nacimiento formato: mm/dd/aaaa");
-								verificadorNacl = fechacompletaNaci.length; 
-								validesfecha = 0; }
+							conVali = 1;
+						}else {fechaHBD = prompt("Ingrese Correctamente \n Fecha Nacimiento formato: mm/dd/aaaa");
+								validoHBD = fechaHBD.length; 
+								conVali = 0; }
+					}else {fechaHBD = prompt("Ingrese Correctamente \n Fecha Nacimiento formato: mm/dd/aaaa");
+								validoHBD = fechaHBD.length; 
+								conVali = 0; }
+				}else {fechaHBD = prompt("Ingrese Correctamente \n Fecha Nacimiento formato: mm/dd/aaaa");
+								validoHBD = fechaHBD.length; 
+								conVali = 0; }
+			}else {fechaHBD = prompt("Ingrese Correctamente formato \n Fecha Nacimiento formato: mm/dd/aaaa");
+								validoHBD = fechaHBD.length; 
+								conVali = 0; }
+		}else {fechaHBD = prompt("Ingrese Correctamente formato \n Fecha Nacimiento formato: mm/dd/aaaa");
+								validoHBD = fechaHBD.length; 
+								conVali = 0; }
+	}else {fechaHBD = prompt("No es una fecha valida \n Fecha Nacimiento formato: mm/dd/aaaa");
+								validoHBD = fechaHBD.length; 
+								conVali = 0; }
 }
-    return fechacompletaNaci;              // retorna la fecha ya validad de nacimiento
+    return fechaHBD;              // retorna la fecha ya validad de nacimiento
 
 }
 // ******************* validez *****************************************************************************
 
 //funcion que valida las edades.
 // ******************* años *****************************************************************************
-function annos(fecha){
+function Edad(fecha){
 // inicializamos variables mes y dia y fecha actual
 	var fechaActual = new Date()
 	var fechadia, fechames
 	fechames = fechaActual.getMonth()
 	fechames = fechames + 1;
 	fechadia = fechaActual.getDate()
-
 	var annomes = parseInt(fecha.slice(0, 2));
 	var annodia = parseInt(fecha.slice(3, 5));
 	var annoaux = parseInt(fecha.slice(6, 10));
@@ -129,7 +96,7 @@ function annos(fecha){
 			var annoshbd = annoactual - annoaux;
 		}else{
 			var annoactual = 2018;
-			var annoshbd = annoactual - annoaux -1;
+			var annoshbd = annoactual - annoaux-1;
 			}
 							}else{
 						var annoactual = 2018;
@@ -144,7 +111,6 @@ return annoshbd;
 function validacon(aux){
 	var conyugerespuesta = aux.toLowerCase();
 	var conteoconyuge = aux.length; 
-	var respuestahijo
 while (ciclocon == 0){
 		if(conteoconyuge == 2){
 			if ((conyugerespuesta == "si") || (conyugerespuesta == "no")){
@@ -164,43 +130,3 @@ while (ciclocon == 0){
 return respuestacon;
 }
 // ******************* Conyuge *****************************************************************************
-
-//funcion que valida los hijos
-// ******************* hijos *****************************************************************************
-function validahijo(aux){
-	var hijorespuesta = aux.toLowerCase();
-	var conteohijo = aux.length; 
-	var respuestacon
-while (ciclocon == 0){
-		if(conteohijo == 2){
-			if ((hijorespuesta == "si") || (hijorespuesta == "no")){
-				respuestacon = hijorespuesta;
-				ciclocon = 1;
-			}else {hijorespuesta = prompt("Favor ingresar respuesta correctamente \n ¿Tiene Hijos?: SI/NO", "");
-					hijorespuesta = hijorespuesta.toLowerCase();
-					conteohijo = hijorespuesta.length; 
-					ciclocon = 0; 
-					}
-		}else {hijorespuesta = prompt("Favor ingresar respuesta correctamente \n ¿Tiene Hijos?: SI/NO", "");
-					hijorespuesta = hijorespuesta.toLowerCase();
-					conteohijo = hijorespuesta.length; 
-					ciclocon = 0;
-				}
-}
-return respuestacon;
-}
-// ******************* hijos *****************************************************************************
-
-//funcion cuenta hijos y valida cantidad
-// ******************* hijos conteo **********************************************************************
-function hijos(aux){
-var cantidadhijos;
-if (aux == "si"){
-	chiquirrines = prompt("Favor ingresar cantidad de hijos (numeros)", "");
-	if (chiquirrines > 0){
-		cantidadhijos = parseInt(chiquirrines);
-	}
-}else{cantidadhijos = 0;}
-return cantidadhijos;
-}
-// ******************* hijos conteo **********************************************************************

@@ -1,3 +1,7 @@
+// ********************************************************************************************************
+// ******                   VARIABLES                                                                 *****
+// ********************************************************************************************************
+
 // inicializamos variables de ciclo
 var conVali = 0;
 var ciclocon = 0; 
@@ -21,6 +25,14 @@ var ResConyuge = new String
 var ResHijos = new String
 
 
+
+// constantes
+const precioBase = 250;
+
+// ********************************************************************************************************
+// ******                   INGRESO DE DATOS                                                          *****
+// ********************************************************************************************************
+
 // pedimos datos del asegurado
 AseName = prompt("Nombre completo:", "");
 AseHBD = prompt("Fecha Nacimiento formato: mm/dd/aaaa");
@@ -40,6 +52,7 @@ if (validacon(ResConyuge) == "si"){
 	ConHBD = prompt("Fecha Nacimiento pareja: mm/dd/aaaa");
 	ConHBD = ValidarFecha(conVali, ConHBD); 
 	EdadCon = Edad(ConHBD); 	
+	recargoscc = parseInt(RecCon(precioBase,EdadCon));
 }
 
 
@@ -48,16 +61,22 @@ ResHijos = prompt("¿Tiene Hijos?: SI/NO", "");
 CanHijos = validaHijo(ResHijos);
 Hijos = vaHijos(CanHijos);
 
-document.write(AseName);
-document.write(AseHBD);
-document.write(EdadAse);
-document.write(ConName);
-document.write(ConHBD);
-document.write(EdadCon);
-document.write(ResHijos);
-document.write(Hijos);
+// ********************************************************************************************************
+// ******                   OPERACIONES                                                               *****
+// ********************************************************************************************************
 
-// Funciones
+comision = precioBase * 0.30;
+recargosaa = parseInt(RecASeg(precioBase,EdadAse));
+recargoshh = Hijos * (precioBase*0.01);
+recargos = recargosaa + recargoscc + recargoshh;
+totalPagar = precioBase + comision + recargos;
+alert(totalPagar);
+
+// ********************************************************************************************************
+// ******                   FUNCIONES                                                                 *****
+// ********************************************************************************************************
+
+
 //funcion que valida que la fecha ingresada sea la correcta.
 // ******************* validez *****************************************************************************
 function ValidarFecha(conVali, fechaHBD) {
@@ -73,7 +92,7 @@ if (validoHBD == 10){
 				var anno = parseInt(fechaHBD.slice(6, 10));
 				if((mes > 0) && (mes < 13)){
 					if((dia > 0) && (dia < 32)){
-						if((anno > 1900) && (anno < 2019)){
+						if((anno > 1800) && (anno < 2019)){
 							conVali = 1;
 						}else {fechaHBD = prompt("Ingrese Correctamente \n Fecha Nacimiento formato: mm/dd/aaaa");
 								validoHBD = fechaHBD.length; 
@@ -111,8 +130,6 @@ function Edad(fecha){
 	var annomes = parseInt(fecha.slice(0, 2));
 	var annodia = parseInt(fecha.slice(3, 5));
 	var annoaux = parseInt(fecha.slice(6, 10));
-	alert(annomes)
-	alert (fechames)
 	if(annomes <= fechames){
 		if(annodia <= fechadia){
 			var annoactual = 2018;
@@ -196,3 +213,34 @@ if (caux == "si"){
 return cantidadhijos;
 }
 // ******************* hijos conteo **********************************************************************
+
+//Funcion que mide los recargos por edad de asegurado
+// ******************* Recargo Asegurado **********************************************************************
+function RecASeg(base,Redad){
+	var AuxRedad = parseInt(Redad);
+	base = parseInt(base);
+	if((AuxRedad < 19) ||(AuxRedad > 65)) {alert ("no asegurable");
+	Recargo = base * 0;}
+	if((AuxRedad >= 19)&&(AuxRedad < 21)){Recargo = base * 0;}
+	if((AuxRedad >= 21)&&(AuxRedad < 25)){Recargo = base * 0.01;}
+	if((AuxRedad >= 25)&&(AuxRedad < 30)){Recargo = base * 0.02;}
+	if((AuxRedad >= 30)&&(AuxRedad < 40)){Recargo = base * 0.05;}
+	if((AuxRedad >= 40)&&(AuxRedad < 50)){Recargo = base * 0.08;}
+	if((AuxRedad >= 50)&&(AuxRedad < 65)){Recargo = base * 0.12;}
+	return Recargo;
+}
+// ******************* Recargo Asegurado **********************************************************************
+
+//Funcion que mide los recargos por edad de conyuge
+// ******************* Recargo Asegurado **********************************************************************
+function RecCon(baseC,RedadC){
+	var AuxRedadC = parseInt(RedadC);
+	baseC = parseInt(baseC);
+	if((AuxRedadC < 30)) {Recargoc = baseC * 0.01;}
+	if((AuxRedadC >= 30)&&(AuxRedadC < 40)){Recargoc = baseC * 0.02;}
+	if((AuxRedadC >= 40)&&(AuxRedadC < 50)){Recargoc = baseC * 0.03;}
+	if((AuxRedadC >= 50)&&(AuxRedadC < 70)){Recargoc = baseC * 0.05;}
+	if((AuxRedadC >= 30)&&(AuxRedadC < 40)){Recargoc = baseC * 0.05;}
+	return Recargoc;
+}
+// ******************* Recargo Asegurado **********************************************************************

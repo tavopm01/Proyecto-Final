@@ -21,18 +21,16 @@
             <legend>Datos Conyuge</legend> 
             <button type="button" id= "siesposa" onclick="esposaOpcion()">Si</button>
             <button type="button" id= "noesposa" onclick="esposaOpcion2()">NO</button> <br>
-            <input type="text" name="nameE" id="nameE" placeholder="NameE""display:none" ><br>
-            <input type="date" name="fechaE" id="fechaE" "display:none">
+            <input type="text" name="nameE" id="nameE" placeholder="NameE"style="visibility:hidden" ><br>
+            <input type="date" name="fechaE" id="fechaE" style="visibility:hidden">
     </fieldset>    
     </form>
 
     <form action="" id=""></form>
     <fieldset>
             <legend>Datos Hijos</legend> 
-            <button type="button" id= "sihijo" onclick="hijoOpcion()">Si</button>
-            <button type="button" id= "nohijo" onclick="hijoOpcion2()">NO</button> <br>
-            <select id="nameH" style="display:none" > 
-                    <option value="0"> 0</option>
+            <select id="nameH" style="visibility:visible" > 
+                    <option value="0" selected> 0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -48,9 +46,9 @@
     <button type="button" onclick="getData()">Enviar</button>
     <fieldset>
         <legend>Cotizacion:</legend>
-        <hr/ id="linea" style="display:none" ><br>
-        <label type = "text" id = "muestratxt" style="display:none" >Costo Total Seguro: </label>
-        <label type = "text" id = "muestra" style="display:none"></label><br>
+        <hr/ id="linea" style="visibility:hidden" ><br>
+        <label type = "text" id = "muestratxt" style="visibility:hidden" >Costo Total Seguro: </label>
+        <label type = "text" id = "muestra" style="visibility:hidden"></label><br>
     </fieldset>
     </form>
 

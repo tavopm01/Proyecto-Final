@@ -8,8 +8,8 @@ var EdadEsposa = new String
 
 var cantHijos = new String
 
-var esposa = new String
-var hijo = new String
+var esposa = "no";
+var hijo = "no";
 
 var auxiliar
 
@@ -21,32 +21,15 @@ var comision, costoTotal
 const precioBase = 250;
 
 var esposaOpcion = function(){ //Si
-    document.getElementById('siesposa').style.visibility='none';
-    document.getElementById('noesposa').style.visibility='none';
-    document.getElementById('nameE').style.visibility='inline';
-    document.getElementById('fechaE').style.visibility='inline';
+    document.getElementById('siesposa').style.visibility='hidden';
+    document.getElementById('nameE').style.visibility='visible';
+    document.getElementById('fechaE').style.visibility='visible';
     NameEsposa = document.getElementById("nameE").value;
     DateEsposa = document.getElementById("fechaE").value;
     esposa = "si";
 }
-var esposaOpcion2 = function(){//no
-    document.getElementById('noesposa').style.visibility='none';
-    document.getElementById('siesposa').style.visibility='none';
-    esposa = "no";
-}
 
-var hijoOpcion = function(){//si
-    document.getElementById('nohijo').style.visibility='none';
-    document.getElementById('sihijo').style.visibility='none';
-    document.getElementById('nameH').style.visibility='inline';
-    hijo = "si";
-}
 
-var hijoOpcion2 = function(){//no
-    document.getElementById('nohijo').style.visibility='none';
-    document.getElementById('sihijo').style.visibility='none';
-    hijo = "N/A";
-}
 var getData = function(){
     //datos del Asegurado
      NameAsegurado = document.getElementById("nameA").value;
@@ -58,21 +41,23 @@ var getData = function(){
      EdadEsposa = calcEdad(DateEsposa);
      recargoEsposa = RecCon(precioBase,parseFloat(EdadEsposa))
     }
-     if (hijo = "si"){
      cantHijos = parseFloat(document.getElementById("nameH").value);
      recargoHijos = (parseFloat(cantHijos) *(precioBase*0.01));
-     
-     }
 
      comision = precioBase * 0.30;
      recargoAsegurado = RecASeg(precioBase,parseFloat(EdadAsegurado));
-     costoTotal = recargoAsegurado + recargoEsposa + recargoHijos + precioBase + comision;
-     document.getElementById('linea').style.visibility='inline';
-     document.getElementById('muestratxt').style.visibility='inline';
-     document.getElementById('muestra').style.visibility='inline';
+     costoTotal = parseFloat(recargoAsegurado) + parseFloat(recargoEsposa) + parseFloat(recargoHijos) + parseFloat(precioBase) + parseFloat(comision);
+     document.getElementById('datosAseguradoForm').style.visibility='hidden';
+     document.getElementById('datosConyugeForm').style.visibility='hidden';
+     document.getElementById('datosHijosForm').style.visibility='hidden';
+     document.getElementById('datosCotizacionForm').style.visibility='visible';
+     document.getElementById('linea').style.visibility='visible';
+     document.getElementById('muestratxt').style.visibility='visible';
+     document.getElementById('muestra').style.visibility='visible';
 
      //operamos
      //*************
+     alert(costoTotal);
      document.getElementById("muestra").innerHTML = costoTotal;
 }
 

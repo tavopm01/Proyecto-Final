@@ -5,11 +5,22 @@
             body{
                 background:#CEE3F6;
             }
+            footer {
+            position: relative;
+            margin-top: 10px;
+            height: 40px;
+            padding:5px 0px;
+            clear: both;
+            background: #286af0;
+            text-align: center;
+            color: #fff;
+                }
             </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    
     <script type="text/javascript" src="nuevoProyecto.js"></script>
     <script languaje="javascript">
             function habilitaDeshabilita(form)
@@ -61,7 +72,7 @@
 
         <center> 
                 <IMG SRC="segurologo.png" ALT="logo seguro">
-        <div class="n"><p>    <b><font color="#0404B4" face="georgia" size="8"><marquee width="400" scrollamount="5" bgcolor="#CEE3F6">Tu Seguro de Confianza.</marquee>    </font></b></p></center>
+        <div class="n"><p>    <b><font color="#0404B4" face="georgia" size="8"><marquee width="400" scrollamount="5" bgcolor="#CEE3F6">Tu Seguro de Confianza.</marquee>    </font></b></p>
 
 
     <h1>Cotizador Automatico</h1><br>
@@ -150,7 +161,7 @@
         <legend>Cotizacion:</legend>
         <table>
                 <tr>
-                        <td colspan="4" align="center" bgcolor="666666" style = "visibility: hidden" id="nametable"><font color="#FFFFFF"><strong>Cotizacion Seguros TK-U</strong></font></td>
+                        <td colspan="4" align="center" bgcolor="#0404B4" style = "visibility: hidden" id="nametable"><font color="#CEE3F6"><strong>Cotizacion Seguros TK-U</strong></font></td>
                     </tr>
             <tr>
             <td>
@@ -251,7 +262,7 @@
                     <label type = "text" id = "muestratxt" style="visibility:hidden" >Costo Total del seguro</label>
             </td>
             <td>
-                    <label type = "text" id = "muestra" style="visibility:hidden"></label><br>
+                    <label type = "text" id = "muestra" style="visibility:hidden; color: #FF0000"></label><br>
             </td>
                 
                 
@@ -262,9 +273,18 @@
     </fieldset>
     
     </form>
-    <button type="button" id="bo" onclick="regresar()" style="visibility:hidden">regresar</button>
-    <button type="button" id="bo2" onclick="javascript:location.reload()" style="visibility:hidden">Nuevo</button>
+    <button type="button" id="bo" onclick="regresar()" style="width: 200px; height: 30px; background: #6699FF; color: #ffffff; cursor: pointer; border: 0px;"/> regresar</button>
+    <button type="button" id="bo2" onclick="javascript:location.reload()" style="width: 200px; height: 30px; background: #6699FF; color: #ffffff; cursor: pointer; border: 0px;"/>Nuevo</button>
+
+    
 </div>
+</center>
+
+<footer>
+                <div class='define'>
+                    <p>Gustavo Pereira, Proyecto Final, Introducción a la programación de computadoras 2018, 08000114</p>
+                </div>
+            </footer>
     
     
     

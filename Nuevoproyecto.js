@@ -22,8 +22,7 @@ var getData = function(){
     NameAsegurado = document.getElementById("nameA").value;
     DateAsegurado = document.getElementById("fechaA").value;
     if(NameAsegurado == "N/A"){
-        alert ("no ha ingresado un nombre de asegurado");
-        alert (DateAsegurado);
+        alert ("no ha ingresado un nombre de asegurado valido");
     }else{
     document.getElementById("datos").style.display = "none";
     document.getElementById("resultado").style.display = "block";

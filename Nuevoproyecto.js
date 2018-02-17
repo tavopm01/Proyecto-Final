@@ -24,6 +24,9 @@ var getData = function(){
     if(NameAsegurado == "N/A"){
         alert ("no ha ingresado un nombre de asegurado valido");
     }else{
+        if(DateAsegurado == ""){
+        alert ("no ha ingresado una fecha valida");
+    }else{
     document.getElementById("datos").style.display = "none";
     document.getElementById("resultado").style.display = "block";
     NameEsposa = document.getElementById("nameE").value;
@@ -109,7 +112,7 @@ var getData = function(){
     document.getElementById('muestratxt').style.visibility='visible';
     document.getElementById('muestra').style.visibility='visible';
     document.getElementById("muestra").innerHTML = costoTotal;
-}
+}}
 }
 
 function calcEdad(datehbd)

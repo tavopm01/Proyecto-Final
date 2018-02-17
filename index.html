@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <style type="text/css">
+            body{
+                background:#CEE3F6;
+            }
+            footer {
+            position: relative;
+            margin-top: 10px;
+            height: 40px;
+            padding:5px 0px;
+            clear: both;
+            background: #286af0;
+            text-align: center;
+            color: #fff;
+                }
+            </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <script type="text/javascript" src="nuevoProyecto.js"></script>
+    <script languaje="javascript">
+            function habilitaDeshabilita(form)
+            {
+                if (form.boletin.checked == true)
+                {
+                form.nameE.disabled = false;
+                form.fechaE.disabled = false;
+                document.getElementById('lbl3').style.visibility='visible';
+                document.getElementById('nameE').style.visibility='visible';
+                document.getElementById('lbl4').style.visibility='visible';
+                document.getElementById('fechaE').style.visibility='visible';
+                }
+             
+                if (form.boletin.checked == false)
+                { 
+                form.nameE.disabled = true;
+                form.fechaE.disabled = true;
+                document.getElementById('lbl3').style.visibility='hidden';
+                document.getElementById('nameE').style.visibility='hidden';
+                document.getElementById('lbl4').style.visibility='hidden';
+                document.getElementById('fechaE').style.visibility='hidden';
+                }
+             
+            }
+            function habilitaDeshabilita2(form)
+            {
+                if (form.boletin2.checked == true)
+                {
+                form.nameH.disabled = false;
+                document.getElementById('nameH').style.visibility='visible';
+                document.getElementById('lbl10').style.visibility='visible';
+                
+                }
+             
+                if (form.boletin2.checked == false)
+                { 
+                form.nameH.disabled = true;
+                document.getElementById('nameH').style.visibility='hidden';
+                document.getElementById('lbl10').style.visibility='hidden';
+                }
+             
+            }
+            </script>
+</head>
+
+<body>
+
+
+        <center> 
+                <IMG SRC="segurologo.png" ALT="logo seguro">
+        <div class="n"><p>    <b><font color="#0404B4" face="georgia" size="8"><marquee width="400" scrollamount="5" bgcolor="#CEE3F6">Tu Seguro de Confianza.</marquee>    </font></b></p>
+
+
+    <h1>Cotizador Automatico</h1><br>
+<div id = "datos">
+    <fieldset>
+       <legend>Datos</legend> 
+       
+    <form action="" id="">
+    <table>
+        <tr>
+            <td>
+                        <label type = "text" id = "lbl" ><b>Datos Personales Asegurado:</b> </label>
+            </td>
+            <td>
+                    <label type = "text" id = "lbl1" ><b>Nombre:</b> </label>
+            </td>
+            <td>
+                    <input type="text" name="nameA" id="nameA" placeholder="NameA" value = "N/A"><br>
+            </td>
+                <td>
+                        <label type = "text" id = "lbl2" ><b>Fecha Nacimiento:</b> </label>
+                </td>
+                <td>
+                        <input type="date" name="fechaA" id="fechaA"><br>
+                </td>
+                
+        </tr>
+        <tr>
+            </form>
+            <td>
+            <form action="" name="formesposa">
+                    <label type = "text" id = "lbla" ><b>Tiene Esposa:</b> </label>
+             <input type="checkbox" name="boletin" value="ON" onClick="habilitaDeshabilita(this.form)"> Si. 
+                    <br><br>
+                </td>
+                <td>
+                        <label type = "text" id = "lbl3" style="visibility:hidden"  ><b>Nombre Esposa:</b> </label>
+                </td>
+            <td>
+                    <input type="text" name="nameE" id="nameE" placeholder="NameE" value = "N/A" style="visibility:hidden" ><br>
+            </td>
+            <td>
+                    <label type = "text" id = "lbl4" style="visibility:hidden" ><b>Fecha Nacimiento:</b> </label>
+            </td>
+            <td>
+                    <input type="date" name="fechaE" id="fechaE" style="visibility:hidden" ><br>
+            </td> 
+            </form>
+        </tr>
+        <tr>
+            <td>
+                    <form action="" name="hijos">
+                            <label type = "text" id = "lblh" ><b>Tiene hijos:</b> </label>
+                            <input type="checkbox" name="boletin2" value="ON" onClick="habilitaDeshabilita2(this.form)"> Si.
+                            <br><br>
+            </td>
+            <td>
+                    <label type = "text" id = "lbl10" style="visibility:hidden" ><b>Cantidad de Hijos:</b> </label>
+            </td>
+            <td>
+                    <select id="nameH" name = "nameH" style="visibility:hidden" > 
+                            <option value="0" selected> 0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                    </select> 
+            </td>
+                </form>
+
+        </tr>
+    </table>
+</fieldset>
+<button type="button" value="guardar" onclick="getData()" style="width: 200px; height: 30px; background: #6699FF; color: #ffffff; cursor: pointer; border: 0px;"/>Guardar</button>
+<button type="button" value="Recargar página" onClick="location.reload();" style="width: 200px; height: 30px; background: #6699FF; color: #ffffff; cursor: pointer; border: 0px;"/>Nuevo</button>
+</div>
+        
+<div id = "resultado" style="visibility:hidden">
+    <fieldset>
+        <legend>Cotizacion:</legend>
+        <table>
+                <tr>
+                        <td colspan="4" align="center" bgcolor="#0404B4" style = "visibility: hidden" id="nametable"><font color="#CEE3F6"><strong>Cotizacion Seguros TK-U</strong></font></td>
+                    </tr>
+            <tr>
+            <td>
+                <label type = "text" id = "nombretxt" style="visibility:hidden" >Nombre completo: </label>
+            </td>
+            <td>
+                <label type = "text" id = "nombre" style="visibility:hidden"></label><br>
+            </td>
+        </tr>
+             <tr>
+                 <td>
+                        <label type = "text" id = "fechantxt" style="visibility:hidden" >Fecha Nacimiento: </label>
+                 </td>
+             <td>
+                    <label type = "text" id = "fechan" style="visibility:hidden"></label><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                    <label type = "text" id = "edadtxt" style="visibility:hidden" >Edad Asegurado: </label>
+                </td>
+            <td>
+                    <label type = "text" id = "edad" style="visibility:hidden"></label><br>
+            </td>    
+        </tr>       
+            <tr>
+                <td>
+                        <label type = "text" id = "nombrectxt" style="visibility:hidden" >Nombre esposa: </label>
+                </td>
+                <td>
+                        <label type = "text" id = "nombrec" style="visibility:hidden"></label><br>
+                </td>
+            </tr>
+            <tr>
+                    <td>
+                            <label type = "text" id = "fechanctxt" style="visibility:hidden" >Fecha Nacimiento: </label>
+                    </td>
+                    <td>
+                            <label type = "text" id = "fechanc" style="visibility:hidden"></label><br>
+                    </td>
+                    
+            </tr>
+        <tr>
+            <td>
+                    <label type = "text" id = "edadctxt" style="visibility:hidden" >Edad: </label>
+            </td>
+            <td>
+                    <label type = "text" id = "edadc" style="visibility:hidden"></label><br>
+            </td>
+                
+        </tr>
+        <tr>
+            <td>
+                    <label type = "text" id = "costoBasetxt" style="visibility:hidden" >Costo base: </label>
+            </td>
+            <td>
+                    <label type = "text" id = "costoBase" style="visibility:hidden"></label><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                    <label type = "text" id = "comisiontxt" style="visibility:hidden" >Comision: </label>
+            </td>
+                <td>
+                        <label type = "text" id = "comision" style="visibility:hidden"></label><br>
+                </td>
+                
+        </tr>
+        <tr>
+            <td>
+                    <label type = "text" id = "redadtxt" style="visibility:hidden" >Recargo por edad: </label>
+            </td>
+            <td>
+                    <label type = "text" id = "redad" style="visibility:hidden"></label><br>
+            </td>
+                
+        </tr>
+        <tr>
+            <td>
+                    <label type = "text" id = "eredadtxt" style="visibility:hidden" >Recargo por edad Esposa: </label>
+            </td>
+            <td>
+                    <label type = "text" id = "eredad" style="visibility:hidden"></label><br>
+            </td>
+                
+        </tr>
+        <tr>
+            <td>
+                    <label type = "text" id = "hijosstxt" style="visibility:hidden" >Recargo por Hijos: </label>
+            </td>
+            <td>
+                    <label type = "text" id = "hijoss" style="visibility:hidden"></label><br>
+            </td>
+                
+        </tr>
+        <tr>
+            <td>
+                    <label type = "text" id = "muestratxt" style="visibility:hidden" >Costo Total del seguro</label>
+            </td>
+            <td>
+                    <label type = "text" id = "muestra" style="visibility:hidden; color: #FF0000"></label><br>
+            </td>
+                
+                
+        </tr>
+            
+    </table>
+           
+    </fieldset>
+    
+    </form>
+    <button type="button" id="bo" onclick="regresar()" style="width: 200px; height: 30px; background: #6699FF; color: #ffffff; cursor: pointer; border: 0px;"/> regresar</button>
+    <button type="button" id="bo2" onclick="javascript:location.reload()" style="width: 200px; height: 30px; background: #6699FF; color: #ffffff; cursor: pointer; border: 0px;"/>Nuevo</button>
+
+    
+</div>
+</center>
+
+<footer>
+                <div class='define'>
+                    <p>Gustavo Pereira, Proyecto Final, Introducción a la programación de computadoras 2018, 08000114</p>
+                </div>
+            </footer>
+    
+    
+    
+</body>
+</html>
